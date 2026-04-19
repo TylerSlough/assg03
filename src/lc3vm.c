@@ -329,6 +329,11 @@ void lea(uint16_t i)
  *   second source register or the immediate value encoded in the
  */
 // put your implememtation of st() here below it documentation
+void st(uint16_t i)
+{
+  uint16_t addr = reg[RPC] + PCOFF9(i);
+  mem_write(addr, reg[DR(i)]);
+}
 
 /** @brief store indirect
  *
@@ -345,6 +350,13 @@ void lea(uint16_t i)
  *   second source register or the immediate value encoded in the
  */
 // put your implememtation of sti() here below it documentation
+void sti(uint16_t i)
+{
+  uint16_t addr1 = reg[RPC] + PCOFF9(i);
+  uint16_t addr2 = mem_read(addr1);
+
+  mem_write(addr2, reg[DR(i)]);
+}
 
 /** @brief store offset relative to base address
  *
@@ -360,6 +372,11 @@ void lea(uint16_t i)
  *   second source register or the immediate value encoded in the
  */
 // put your implememtation of str() here below it documentation
+void str(uint16_t i)
+{
+  uint16_t addr = reg[SR1(i)] + OFF6(i);
+  mem_write(addr, reg[DR(i)]);
+}
 
 /** @brief jump unconditionally
  *
