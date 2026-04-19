@@ -99,6 +99,8 @@ void jmp(uint16_t i);
 void br(uint16_t i);
 void jsr(uint16_t i);
 
+void start(uint16_t offset);
+
 void rti(uint16_t i);
 void res(uint16_t i);
 void tgetc();
